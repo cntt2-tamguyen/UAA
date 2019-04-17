@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout :: head"></head>
+
+<body>
+<nav th:replace="layout :: header"></nav>
+
+<div class="container" id="main-content">
+    <div class="row">
+        <div class="col-6 no-padding">
+            <form action="#" class="form-inline" method="get" th:action="@{/roles/search}">
+                <input class="form-control mr-sm-2" name="term" placeholder="Search by name ..." type="search"/>
+                <button class="btn btn-primary" type="submit">
+                    <i class="fa fa-search"></i> Search
+                </button>
+            </form>
+        </div>
+
+        <div class="col-6 no-padding">
+            <a class="btn btn-success float-right" href="#" th:href="@{/roles/add}">
+                <i class="fa fa-plus-square"></i> New roles
+            </a>
+        </div>
+    </div>
+
+    <div class="row mt-4">
+        <div class="col-12 alert alert-success alert-dismissible fade show" role="alert" th:if="${successMessage}">
+            <span th:text="${successMessage}"></span>
+            <button aria-label="Close" class="close" data-dismiss="alert" type="button">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+
+        <th:block th:if="${#lists.isEmpty(roles)}">
+            <h5>No role</h5>
+        </th:block>
+
+        <th:block th:unless="${#lists.isEmpty(roles)}">
+            <div class="table-responsive">
+                <h5>List of customers</h5>
+                <table class="table table-bordered table-hover">
+                    <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Name</th>
+                        <th>Action</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="role,iterStat : ${roles}">
+                        <th scope="row" th:text="${iterStat.count}"></th>
+                        <td th:text="${role.name}"></td>
+                        <td>
+                            <a class="mr-sm-2 text-primary" href="#"
+                               th:href="@{/roles/{id}/edit(id=${role.id})}">
+                                <i class="fa fa-pencil"></i>
+                            </a>
+                            <a class="text-danger" href="#" th:href="@{/roles/{id}/delete(id=${role.id})}">
+                                <i class="fa fa-trash"></i>
+                            </a>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </th:block>
+    </div>
+</div><!-- /.container -->
+
+<footer th:replace="layout :: footer"></footer>
+
+</body>
+</html>
