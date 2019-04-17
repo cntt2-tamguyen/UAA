@@ -66,6 +66,10 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-thymeleaf</artifactId>
 		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-security</artifactId>
+		</dependency>
 	</dependencies>
 	<!-- Add config liquibase -->
 	<build>
@@ -125,6 +129,25 @@
 							<artifactId>validation-api</artifactId>
 							<version>${validation-api.version}</version>
 						</dependency>
+						<!-- Add for SB Admin -->
+						<dependency>
+							<groupId>org.springframework.boot</groupId>
+							<artifactId>spring-boot-starter-security</artifactId>
+						</dependency>
+						<!-- https://mvnrepository.com/artifact/org.webjars/startbootstrap-sb-admin-2 -->
+						<dependency>
+							<groupId>org.webjars</groupId>
+							<artifactId>startbootstrap-sb-admin-2</artifactId>
+							<version>4.0.2</version>
+						</dependency>
+
+						<!-- Add for SB Admin -->
+						<!-- Mail -->
+						<dependency>
+							<groupId>org.springframework.boot</groupId>
+							<artifactId>spring-boot-starter-mail</artifactId>
+						</dependency>
+						<!-- Mail -->
 					</dependencies>
 				</plugin>
 			</plugins>

@@ -72,4 +72,10 @@ public class UserController {
             return "redirect:/users";
         }
     }
+
+    @PostMapping("/register")
+    public String register(@Valid UserModel userModel) throws Exception {
+        userService.register(userModel);
+        return "redirect:/login";
+    }
 }
